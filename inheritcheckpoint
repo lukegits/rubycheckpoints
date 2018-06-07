@@ -1,0 +1,43 @@
+class BankAccount
+
+  attr_reader :balance
+
+  def initialize(balance)
+    @balance = balance
+  end
+
+  def display_balance
+    @balance
+  end
+
+  def deposit(amount)
+    @balance += amount if amount > 0
+  end
+
+  def withdraw(amount)
+    @balance -= amount if amount <= @balance
+  end
+
+end
+
+class CheckingAccount < BankAccount
+  attr_reader :account
+
+MAX_FREE_WITHDRAWALS = 3
+
+def number_of_withdrawals
+     MAX_FREE_WITHDRAWALS - 3
+end
+
+def transfer (account, amount)
+  if amount < account
+  @account -= amount
+else
+  @account += amount
+end
+end
+
+def get_free_withdrawal_limit
+  MAX_FREE_WITHDRAWALS
+end
+end
